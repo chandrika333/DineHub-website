@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            
+        }
+        header {
+            background: #121212;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77b300 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 20px;
+            
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 15px 0 15px;
+            
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        .showcase {
+            background: url('restaurant.jpg') no-repeat center center/cover;
+            min-height: 400px;
+            color:white;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .showcase h1 {
+            font-size: 55px;
+            margin-top: 0;
+        }
+        .showcase p {
+            font-size: 20px;
+        }
+        .search-bar {
+            margin-top: 50px;
+            text-align: center;
+        }
+        .search-bar input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            width: 50%;
+            border-radius: 5px;
+        }
+        .search-bar input[type="submit"] {
+            padding: 10px 20px;
+            background: #77b300;
+            border: 0;
+            cursor: pointer;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .restaurant-list {
+            margin-top: 50px;
+            
+        }
+        .restaurant {
+            color:black;
+            background: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+        }
+        .restaurant img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        .restaurant h3 {
+            margin: 0;
+        }
+        .restaurant p {
+            margin: 10px 0;
+        }
+        .booking-form {
+            margin-top: 50px;
+            text-align: center;
+        }
+        .booking-form input[type="text"],
+        .booking-form input[type="email"],
+        .booking-form input[type="date"],
+        .booking-form input[type="time"],
+        .booking-form textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            width: 50%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .booking-form textarea {
+            height: 100px;
+        }
+        .booking-form input[type="submit"] {
+            padding: 10px 20px;
+            background: #77b300;
+            border: 0;
+            cursor: pointer;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .contact-info {
+            margin-top: 50px;
+            text-align: center;
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+        .contact-info p {
+            margin: 0;
+            padding: 5px 0;
+        }
+        body{
+    color: white;
+     background-color: black;
+ }
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.restaurant1 {
+    color:white;
+    background-color: black;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.restaurant-img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+}
+
+.dishes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.dish {
+    background-color: white;
+    color:black;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.dish:hover {
+    transform: scale(1.05);
+}
+
+.dish-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.book-now {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-now:hover {
+    background-color: #218838;
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.payment-methods button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.payment-methods button:hover {
+    background-color: #0056b3;
+}
+.restaurantpic{
+            background-image: url("C:/Users/chand/OneDrive/Documents/resturant.jpg");
+            background-size: cover;
+}
+#heading{
+    align-content: center;
+    padding-left: 500px;
+}
+.showcase{
+    background-image: url("http://www.textures4photoshop.com/tex/thumbs/italian-restaurant-menu-with-chalkboard-background-1449.jpg");
+    background-size: cover;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Restaurant Booking</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="C:\html\home.html">Home</a></li>
+                    <li><a href="C:\html\reservation..html">Reservation</a></li>
+                    <li><a href="C:\html\contact2.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="showcase">
+        <div class="container">
+            <h1>Welcome to Our Restaurant</h1>
+            <p>Book your table online quickly and easily</p>
+            <p>Make your order easy</p>
+            <p>Enjoy the order</p>
+            <h3>Be Happy<br> <p>&hearts; &hearts;  &#9829;</p></h3>
+        </div>
+       
+    </section>
+    <div class="restaurantpic">
+        <div class="restaurant">
+            <div class="headingline">
+            <h1 id="heading"><u>Delicious Bites</u></h1>
+            </div>
+        </div>
+            <div class="dishes">
+                <div class="dish">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.XlUApAhMY1fc273pa_N5wwHaE7&pid=Api&P=0&h=180" alt="Dish 1" class="dish-img">
+                    <h2>Paneer Butter Masala</h2>
+                    <p>Price: ₹250</p>
+                    <button class="book-now" onclick="bookNow('Paneer Butter Masala', 250)">Book Now</button>
+                </div>
+                <div class="dish">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.XD_h36tpTHaEQGnkAfLOAAHaHa&pid=Api&P=0&h=180" alt="Dish 1" class="dish-img">
+                    <h2>Chicken Lollipop</h2>
+                    <p>Price: ₹150</p>
+                    <button class="book-now" onclick="bookNow('Paneer Butter Masala', 250)">Book Now</button>
+                </div>
+                <div class="dish">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.cJ47_OVh1HDlaqmYEqIq8wHaE6&pid=Api&P=0&h=180" alt="Dish 1" class="dish-img">
+                    <h2>Mutton Biryani</h2>
+                    <p>Price: ₹350</p>
+                    <button class="book-now" onclick="bookNow('Paneer Butter Masala', 250)">Book Now</button>
+                </div>
+                <div class="dish">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.xXf-M8Rrfp_rfG3bo4qRbgHaFD&pid=Api&P=0&h=180" alt="Dish 2" class="dish-img">
+                    <h2>Chicken Biryani</h2>
+                    <p>Price: ₹300</p>
+                    <button class="book-now" onclick="bookNow('Chicken Biryani', 300)">Book Now</button>
+                </div>
+                <div class="dish">
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.0rUaUWEqxiaWgX2FPotp5AHaEK&pid=Api&P=0&h=180" alt="Dish 3" class="dish-img">
+                    <h2>Vegetable Pulao</h2>
+                    <p>Price: ₹180</p>
+                    <button class="book-now" onclick="bookNow('Vegetable Pulao', 180)">Book Now</button>
+                </div>
+                <div class="dish">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.9SvjMe_SeCJdh_jmPGi2PgHaHa&pid=Api&P=0&h=180" alt="Dish 4" class="dish-img">
+                    <h2>Butter Naan</h2>
+                    <p>Price: ₹50</p>
+                    <button class="book-now" onclick="bookNow('Butter Naan', 50)">Book Now</button>
+                </div>
+                <div class="dish">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.vQgMfhY6HM6xVVSxvRfCpwHaHa&pid=Api&P=0&h=180" alt="Dish 5" class="dish-img">
+                    <h2>Tandoori Chicken</h2>
+                    <p>Price: ₹350</p>
+                    <button class="book-now" onclick="bookNow('Tandoori Chicken', 350)">Book Now</button>
+                </div>
+                <div class="dish">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.bSIyuU6YapV3RQ6M6LxS9AHaD-&pid=Api&P=0&h=180" alt="Dish 6" class="dish-img">
+                    <h2>Gulab Jamun</h2>
+                    <p>Price: ₹120</p>
+                    <button class="book-now" onclick="bookNow('Gulab Jamun', 120)">Book Now</button>
+                </div>
+                <!-- Add more dishes as needed -->
+            </div>
+        </div>
+    </div>
+    
+        <!-- Modal for Booking -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 id="order-title"></h2>
+                <p id="order-price"></p>
+                <div class="payment-methods">
+                    <button onclick="payNow('PhonePe')">Pay with PhonePe</button>
+                    <button onclick="payNow('Google Pay')">Pay with Google Pay</button>
+                    <button onclick="payNow('Paytm')">Pay with Paytm</button>
+                </div>
+            </div>
+        
+    
+        <!-- JavaScript -->
+        <script >
+            function bookNow(dish, price) {
+        document.getElementById('order-title').innerText = `Order: ${dish}`;
+        document.getElementById('order-price').innerText = `Price: ₹${price}`;
+        document.getElementById('modal').style.display = 'flex';
+    }
+    
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+    
+    function payNow(method) {
+        alert(`Payment successful with ${method}! Your order is confirmed.`);
+        closeModal();
+    }
+    
+    </script>
+     </div>
+
+    <section class="search-bar">
+        <div class="container">
+            <h2>Find a Restaurant</h2>
+            <form action="search_results.html" method="get">
+                <input type="text" name="search" placeholder="Enter restaurant name or type...">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+    </section>
+
+    <section class="restaurant-list container">
+        <h2>Popular Restaurants</h2>
+        <div class="restaurant">
+            <img src="https://media.timeout.com/images/106043389/750/562/image.jpg" alt="Olive Bistro">
+            <div>
+                <h3>Olive Bistro</h3>
+                <p>Cuisine: Mediterranean, European</p>
+                <p>Location: Road 46, Jubilee Hills</p>
+                <a href="restaurant_olive_bistro.html">View Details</a>
+            </div>
+        </div>
+        <div class="restaurant">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCKJsGq-ohchbc6utg1cWLX4yIN2RuJckKnQ&s" alt="Shah Ghouse">
+            <div>
+                <h3>Shah Ghouse</h3>
+                <p>Cuisine: Mughlai, Hyderabadi</p>
+                <p>Location: Shalibanda, Charminar</p>
+                <a href="restaurant_shah_ghouse.html">View Details</a>
+            </div>
+        </div>
+        <div class="restaurant">
+            <img src="https://lh5.googleusercontent.com/_NCk4-m2q-M_k6Yj9tPeYW6vnF4QVyv1Dh1ag51TBh8Pbnk6p5Cny68o-fv93raMhCVVhIktjr7kIr9g3mrxZmG6lZyGvjt8km6EjbE0nrHajAeKJDduBBKVDcQuENkDHAYCNfGL=s0" alt="Bawarchi">
+            <div>
+                <h3>Bawarchi</h3>
+                <p>Cuisine: Hyderabadi, Biryani</p>
+                <p>Location: RTC Cross Road, Musheerabad</p>
+                <a href="restaurant_bawarchi.html">View Details</a>
+            </div>
+        </div>
+        <div class="restaurant">
+            <img src="https://5.imimg.com/data5/SELLER/Default/2022/11/OM/QY/QT/6826615/restaurant-interiors-500x500.jpg" alt="Paradise">
+            <div>
+                <h3>Paradise</h3>
+                <p>Cuisine: Hyderabadi, North Indian</p>
+                <p>Location: Multiple locations</p>
+                <a href="restaurant_paradise.html">View Details</a>
+            </div>
+        </div>
+        <div class="restaurant">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpPKCCKPb0GunF21Sqd3U8tjXYWIr31vzsvQ&s" alt="Ohri's Jiva">
+            <div>
+                <h3>Ohri's Jiva</h3>
+                <p>Cuisine: North Indian, Chinese</p>
+                <p>Location: Begumpet</p>
+                <a href="restaurant_ohris_jiva.html">View Details</a>
+            </div>
+        </div>
+        <div class="restaurant">
+            <img src="https://thisisboise.com/wp-content/uploads/2023/11/Tavolata-Italian-Restaurant-Boise.webp" alt="Cafe Bahar">
+            <div>
+                <h3>Cafe Bahar</h3>
+                <p>Cuisine: Hyderabadi, North Indian</p>
+                <p>Location: Basheer Bagh</p>
+                <a href="restaurant_cafe_bahar.html">View Details</a>
+            </div>
+        </div>
+        <div class="restaurant">
+            <img src="https://images.unsplash.com/photo-1538333581680-29dd4752ddf2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fHww" alt="Flechazo">
+            <div>
+                <h3>Flechazo</h3>
+                <p>Cuisine: Mediterranean, Asian</p>
+                <p>Location: Hitech City</p>
+                <a href="restaurant_flechazo.html">View Details</a>
+            </div>
+        </div>
+        <div class="restaurant">
+            <img src="https://c.ndtvimg.com/2023-09/72268kk8_restaurant_625x300_14_September_23.jpg?im=FaceCrop,algorithm=dnn,width=384,height=384" alt="Tatva">
+            <div>
+                <h3>Tatva</h3>
+                <p>Cuisine: Vegetarian, Continental</p>
+                <p>Location: Jubilee Hills</p>
+                <a href="restaurant_tatva.html">View Details</a>
+            </div>
+        </div>
+        <div class="restaurant">
+            <img src="https://assets.cntraveller.in/photos/651e65983734f323ef3d37fe/16:9/w_7936,h_4464,c_limit/SWING-9.jpg" alt="Punjab Grill">
+            <div>
+                <h3>Punjab Grill</h3>
+                <p>Cuisine: North Indian</p>
+                <p>Location: Jubilee Hills</p>
+                <a href="restaurant_punjab_grill.html">View Details</a>            </div>
+        </div>
+        <div class="restaurant">
+            <img src="https://modernrestaurantmanagement.com/assets/media/2021/03/Getty_629200476-1200x655.jpg" alt="pizza nine">
+             <div>
+                <h3>Pizza Nine</h3>
+                <p>Cuisine: North Indian</p>
+                <p>Location: JNTU</p>
+                <a href="restaurant_punjab_grill.html">View Details</a>        
+           </div>
+           </div>
+            
+           </body>
+           </html>
